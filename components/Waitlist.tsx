@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
@@ -9,18 +9,23 @@ export default function Waitlist() {
   const [type, setType] = useState<"company" | "candidate">("company");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    // TODO: wire to your backend / Resend / Supabase
-    setSubmitted(true);
+    try {
+      const res = await fetch("https://formspree.io/f/xaqzvogq", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, type }),
+      });
+      if (res.ok) setSubmitted(true);
+    } catch (err) {
+      console.error("Form error:", err);
+    }
   };
 
   return (
-    <section
-      id="waitlist"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-white"
-    >
+    <section id="waitlist" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-2xl mx-auto text-center">
         <p className="text-xs font-semibold uppercase tracking-widest text-sage-500 mb-3">
           Early access
@@ -28,6 +33,7 @@ export default function Waitlist() {
         <h2 className="text-3xl sm:text-4xl font-semibold text-sage-900 mb-4 text-balance">
           Be first to transform how you hire
         </h2>
+
         <div className="rounded-2xl overflow-hidden shadow-md mb-8 max-w-sm mx-auto">
           <Image
             src="/images/feedback-notification.jpg"
@@ -39,7 +45,7 @@ export default function Waitlist() {
         </div>
 
         <p className="text-warm-600 leading-relaxed mb-8">
-          We're building SureScreen Recruit with a small group of early
+          We are building SureScreen Recruit with a small group of early
           adopters. Join the waitlist and help shape the product — plus lock in
           launch pricing.
         </p>
@@ -49,14 +55,13 @@ export default function Waitlist() {
             <div className="w-14 h-14 rounded-full bg-sage-100 flex items-center justify-center">
               <CheckCircle2 size={28} className="text-sage-500" />
             </div>
-            <p className="font-semibold text-sage-900">You're on the list!</p>
+            <p className="font-semibold text-sage-900">You are on the list!</p>
             <p className="text-sm text-warm-600">
-              We'll be in touch as soon as we're ready for you.
+              We will be in touch as soon as we are ready for you.
             </p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Type toggle */}
             <div className="inline-flex rounded-xl border border-warm-200 p-1 bg-warm-50">
               <button
                 type="button"
@@ -67,7 +72,7 @@ export default function Waitlist() {
                     : "text-warm-600 hover:text-sage-700"
                 }`}
               >
-                I'm hiring
+                I am hiring
               </button>
               <button
                 type="button"
@@ -78,7 +83,7 @@ export default function Waitlist() {
                     : "text-warm-600 hover:text-blush-700"
                 }`}
               >
-                I'm job seeking
+                I am job seeking
               </button>
             </div>
 
