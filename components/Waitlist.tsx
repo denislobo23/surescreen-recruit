@@ -1,12 +1,11 @@
 ﻿"use client";
 
 import { useState } from "react";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export default function Waitlist() {
   const [type, setType] = useState<"company" | "candidate">("company");
-  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section id="waitlist" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
@@ -34,82 +33,70 @@ export default function Waitlist() {
           launch pricing.
         </p>
 
-        {submitted ? (
-          <div className="flex flex-col items-center gap-3 py-8">
-            <div className="w-14 h-14 rounded-full bg-sage-100 flex items-center justify-center">
-              <CheckCircle2 size={28} className="text-sage-500" />
-            </div>
-            <p className="font-semibold text-sage-900">You are on the list!</p>
-            <p className="text-sm text-warm-600">
-              We will be in touch as soon as we are ready for you.
-            </p>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            <div className="inline-flex rounded-xl border border-warm-200 p-1 bg-warm-50">
-              <button
-                type="button"
-                onClick={() => setType("company")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  type === "company"
-                    ? "bg-sage-500 text-white"
-                    : "text-warm-600 hover:text-sage-700"
-                }`}
-              >
-                I am hiring
-              </button>
-              <button
-                type="button"
-                onClick={() => setType("candidate")}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  type === "candidate"
-                    ? "bg-blush-500 text-white"
-                    : "text-warm-600 hover:text-blush-700"
-                }`}
-              >
-                I am job seeking
-              </button>
-            </div>
-
-            <form
-              action="https://formspree.io/f/xaqzvogq"
-              method="POST"
-              onSubmit={() => setSubmitted(true)}
-              className="space-y-4"
+        <div className="space-y-4">
+          <div className="inline-flex rounded-xl border border-warm-200 p-1 bg-warm-50">
+            <button
+              type="button"
+              onClick={() => setType("company")}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                type === "company"
+                  ? "bg-sage-500 text-white"
+                  : "text-warm-600 hover:text-sage-700"
+              }`}
             >
-              <input type="hidden" name="type" value={type} />
-              <input type="hidden" name="_next" value="https://surescreen.com.au" />
-
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  placeholder={
-                    type === "company"
-                      ? "your@company.com.au"
-                      : "your@email.com"
-                  }
-                  className="flex-1 px-4 py-3 rounded-xl border border-warm-200 bg-warm-50 text-sage-900 placeholder:text-warm-400 focus:outline-none focus:ring-2 focus:ring-sage-300 text-sm"
-                />
-                <button
-                  type="submit"
-                  className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-medium transition-colors ${
-                    type === "company"
-                      ? "bg-sage-500 hover:bg-sage-600"
-                      : "bg-blush-500 hover:bg-blush-600"
-                  }`}
-                >
-                  Join waitlist
-                  <ArrowRight size={15} />
-                </button>
-              </div>
-              <p className="text-xs text-warm-400">
-                No spam. No selling your data. Just launch updates.
-              </p>
-            </form>
+              I am hiring
+            </button>
+            <button
+              type="button"
+              onClick={() => setType("candidate")}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                type === "candidate"
+                  ? "bg-blush-500 text-white"
+                  : "text-warm-600 hover:text-blush-700"
+              }`}
+            >
+              I am job seeking
+            </button>
           </div>
-        )}
+
+          <form
+            action="https://formspree.io/f/xaqzvogq"
+            method="POST"
+            className="space-y-4"
+          >
+            <input type="hidden" name="type" value={type} />
+            <input type="hidden" name="_next" value="https://surescreen.com.au" />
+            <input type="hidden" name="_subject" value="New SureScreen Waitlist Signup" />
+
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder={
+                  type === "company"
+                    ? "your@company.com.au"
+                    : "your@email.com"
+                }
+                className="flex-1 px-4 py-3 rounded-xl border border-warm-200 bg-warm-50 text-sage-900 placeholder:text-warm-400 focus:outline-none focus:ring-2 focus:ring-sage-300 text-sm"
+              />
+              <button
+                type="submit"
+                className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-medium transition-colors ${
+                  type === "company"
+                    ? "bg-sage-500 hover:bg-sage-600"
+                    : "bg-blush-500 hover:bg-blush-600"
+                }`}
+              >
+                Join waitlist
+                <ArrowRight size={15} />
+              </button>
+            </div>
+            <p className="text-xs text-warm-400">
+              No spam. No selling your data. Just launch updates.
+            </p>
+          </form>
+        </div>
       </div>
     </section>
   );
