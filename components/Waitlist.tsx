@@ -5,24 +5,8 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 
 export default function Waitlist() {
-  const [email, setEmail] = useState("");
   const [type, setType] = useState<"company" | "candidate">("company");
   const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    try {
-      const res = await fetch("https://formspree.io/f/xaqzvogq", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, type }),
-      });
-      if (res.ok) setSubmitted(true);
-    } catch (err) {
-      console.error("Form error:", err);
-    }
-  };
 
   return (
     <section id="waitlist" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
@@ -61,7 +45,7 @@ export default function Waitlist() {
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-4">
             <div className="inline-flex rounded-xl border border-warm-200 p-1 bg-warm-50">
               <button
                 type="button"
@@ -87,35 +71,44 @@ export default function Waitlist() {
               </button>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={
-                  type === "company"
-                    ? "your@company.com.au"
-                    : "your@email.com"
-                }
-                className="flex-1 px-4 py-3 rounded-xl border border-warm-200 bg-warm-50 text-sage-900 placeholder:text-warm-400 focus:outline-none focus:ring-2 focus:ring-sage-300 text-sm"
-              />
-              <button
-                type="submit"
-                className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-medium transition-colors ${
-                  type === "company"
-                    ? "bg-sage-500 hover:bg-sage-600"
-                    : "bg-blush-500 hover:bg-blush-600"
-                }`}
-              >
-                Join waitlist
-                <ArrowRight size={15} />
-              </button>
-            </div>
-            <p className="text-xs text-warm-400">
-              No spam. No selling your data. Just launch updates.
-            </p>
-          </form>
+            <form
+              action="https://formspree.io/f/xaqzvogq"
+              method="POST"
+              onSubmit={() => setSubmitted(true)}
+              className="space-y-4"
+            >
+              <input type="hidden" name="type" value={type} />
+              <input type="hidden" name="_next" value="https://surescreen.com.au" />
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder={
+                    type === "company"
+                      ? "your@company.com.au"
+                      : "your@email.com"
+                  }
+                  className="flex-1 px-4 py-3 rounded-xl border border-warm-200 bg-warm-50 text-sage-900 placeholder:text-warm-400 focus:outline-none focus:ring-2 focus:ring-sage-300 text-sm"
+                />
+                <button
+                  type="submit"
+                  className={`inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white text-sm font-medium transition-colors ${
+                    type === "company"
+                      ? "bg-sage-500 hover:bg-sage-600"
+                      : "bg-blush-500 hover:bg-blush-600"
+                  }`}
+                >
+                  Join waitlist
+                  <ArrowRight size={15} />
+                </button>
+              </div>
+              <p className="text-xs text-warm-400">
+                No spam. No selling your data. Just launch updates.
+              </p>
+            </form>
+          </div>
         )}
       </div>
     </section>
