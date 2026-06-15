@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sage-500: #4d784e;
+  --blush-400: #e87a4a;
+  --warm-100: #f2efe9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #faf9f7;
+  color: #213222;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
