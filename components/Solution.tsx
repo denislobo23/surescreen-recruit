@@ -1,26 +1,26 @@
-import { Bot, CheckCircle2, MessageSquare, Star } from "lucide-react";
+﻿import { Bot, CheckCircle2, MessageSquare, Star } from "lucide-react";
 import Image from "next/image";
 
 const features = [
   {
     icon: Bot,
     title: "Your hiring manager, cloned",
-    body: "We create an AI clone trained on your hiring manager's expertise, tone, and the specific role requirements. It knows what great looks like — because it learned from someone who does.",
+    body: "We create SureScreen™ — an AI clone trained on your hiring manager's expertise, tone, and the specific role requirements. It knows what great looks like, because it learned from someone who does.",
   },
   {
     icon: MessageSquare,
-    title: "Deep, probing interviews",
-    body: "The clone doesn't just ask surface questions. It cross-examines, challenges answers, and verifies resume claims in real time — something an overwhelmed recruiter rarely has time to do.",
+    title: "Deep, probing screening interviews",
+    body: "SureScreen™ doesn't just ask surface questions. It cross-examines, challenges answers, and verifies resume claims in real time — something an overwhelmed recruiter rarely has time to do.",
   },
   {
     icon: CheckCircle2,
-    title: "Interview at any hour",
-    body: "Candidates choose their own time — 6am, 10pm, whenever. No scheduling back-and-forth. No time zones. The clone is always ready, always consistent, never having a bad day.",
+    title: "Screen candidates at any hour",
+    body: "Candidates choose their own time — 6am, 10pm, whenever. No scheduling back-and-forth. No time zones. SureScreen™ is always ready, always consistent, never having a bad day.",
   },
   {
     icon: Star,
     title: "Ranked shortlist + feedback loop",
-    body: "Every candidate gets ranked by response quality. Your hiring manager reviews the top five — already pre-interviewed — and meets only the best. Every other candidate gets feedback to grow from.",
+    body: "Every candidate who completes a SureScreen™ interview gets ranked by response quality. Your hiring manager reviews the top five — already screened — and meets only the best.",
   },
 ];
 
@@ -32,7 +32,7 @@ export default function Solution() {
           <div className="rounded-2xl overflow-hidden shadow-md order-2 lg:order-1">
             <Image
               src="/images/solution-ai-interview.jpg"
-              alt="Candidate completing AI interview"
+              alt="Candidate completing AI screening interview"
               width={600}
               height={400}
               className="w-full h-auto object-cover"
@@ -43,12 +43,12 @@ export default function Solution() {
               Our solution
             </p>
             <h2 className="text-3xl sm:text-4xl font-semibold text-sage-900 mb-4 text-balance">
-              An AI clone that interviews every candidate for you
+              SureScreen™ screens every candidate for you
             </h2>
             <p className="text-warm-600 leading-relaxed">
-              SureScreen Recruit sits between your job ad and your calendar. Every
-              applicant gets a real interview — just not with a human yet. Only the
-              best five make it to your desk.
+              SureScreen™ sits between your job ad and your calendar. Every
+              applicant gets a real screening interview — just not with a human
+              yet. Only the best five make it to your desk.
             </p>
           </div>
         </div>
@@ -71,14 +71,14 @@ export default function Solution() {
         <div className="mt-10 p-6 rounded-2xl bg-blush-50 border border-blush-200 flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <div className="flex-1">
             <p className="font-semibold text-blush-800 mb-1">
-              AI screening tool — in development
+              SureScreen™ — in development
             </p>
             <p className="text-sm text-blush-700">
-              Our AI hiring manager clone is currently being built. Join the
+              Our AI screening clone is currently being built. Join the
               waitlist to be first in line when we launch — and help shape the product.
             </p>
           </div>
-          <a
+          
             href="#waitlist"
             className="shrink-0 px-5 py-2.5 rounded-xl bg-blush-500 text-white text-sm font-medium hover:bg-blush-600 transition-colors"
           >
