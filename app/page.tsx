@@ -1,7 +1,8 @@
-import Navbar from "@/components/Navbar";
+﻿import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
 import Solution from "@/components/Solution";
+import Comparison from "@/components/Comparison";
 import HowItWorks from "@/components/HowItWorks";
 import TalentPool from "@/components/TalentPool";
 import Pricing from "@/components/Pricing";
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <Problem />
       <Solution />
+      <Comparison />
       <HowItWorks />
       <TalentPool />
       <Pricing />
