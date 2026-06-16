@@ -20,10 +20,9 @@ export default function Hero() {
             <p className="text-lg text-warm-700 leading-relaxed mb-8">
               Candidates today can apply to hundreds of jobs with a single click.
               Your team drowns in applications, suffers recency fatigue, and still
-              misses outstanding people. SureScreen™ fixes this — an AI clone of
-              your hiring manager screens every applicant through a real interview,
-              ranks them by substance, and hands you the top five ready for a
-              real conversation.
+              misses outstanding people. SureScreen™ accurately screens every
+              applicant through a real interview, ranks them by substance, and
+              hands you the top five ready for a real conversation.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               
@@ -71,3 +70,4 @@ export default function Hero() {
     </section>
   );
 }
+
